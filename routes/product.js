@@ -110,7 +110,7 @@ productRouter.get('/api/products-by-subcategory/:subCategory', async (req, res) 
     try {
         const {subCategory} = req.params;
         const products = await Product.find({subCategory:subCategory});
-        if(!products || !products.length ==0){
+        if(!products || products.length ==0){
             return res.status(404).json({msg: "Không tìm thấy danh mục con này"});
         }
         return res.status(200).json(products);
